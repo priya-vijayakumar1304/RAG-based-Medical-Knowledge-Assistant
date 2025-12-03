@@ -21,16 +21,16 @@ The system retrieves relevant medical content from the document, processes it wi
 Clone the repository
 
 ```bash
-git clonehttps://github.com/entbappy/Build-a-Complete-Medical-Chatbot-with-LLMs-LangChain-Pinecone-Flask-AWS.git
+git clone https://github.com/priya-vijayakumar1304/RAG-based-Medical-Knowledge-Assistant.git
 ```
 #### STEP 01- Create a conda environment after opening the repository
 
 ```bash
-conda create -n medibot python=3.10 -y
+conda create -p venv python==3.12.7 -y
 ```
 
 ```bash
-conda activate medibot
+conda activate venv/
 ```
 
 
