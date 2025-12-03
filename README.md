@@ -1,19 +1,19 @@
 ## RAG-based-Medical-Knowledge-Assistant
 
-An intelligent medical question-answering chatbot built using Retrieval-Augmented Generation (RAG), powered by Flask, LLMs, and the Gale Encyclopedia of Medicine.
+An intelligent medical question-answering chatbot built using Retrieval-Augmented Generation (RAG), LLMs, and the Gale Encyclopedia of Medicine.
 The system retrieves relevant medical content from the document, processes it with an LLM, and responds with clean and structured answers.
 
 ### Tech Stack
-Python 3.12.7
-LangChain orchestration
-HuggingFaceEmbedding (model: sentence-transformers/all-MiniLM-L6-v2)
-Pinecone Vector Database
-Groq (model: openai/gpt-oss-120b)
-Backend: Flask
-Frontend: Bootstrap + jQuery
-CI/CD pipeline - Github Actions
-Docker
-AWS EC2
+- Python 3.12.7
+- LangChain orchestration
+- HuggingFaceEmbedding (model: sentence-transformers/all-MiniLM-L6-v2)
+- Pinecone Vector Database
+- Groq (model: openai/gpt-oss-120b)
+- Backend: Flask
+- Frontend: Bootstrap + jQuery
+- CI/CD pipeline - Github Actions
+- Docker
+- AWS EC2
 
 ### How to run?
 #### STEPS:
