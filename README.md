@@ -1,6 +1,6 @@
 ## RAG-based-Medical-Knowledge-Assistant
 
-An intelligent medical question-answering chatbot built using Retrieval-Augmented Generation (RAG), LLMs, and the Gale Encyclopedia of Medicine.
+An intelligent medical question-answering chatbot built using Retrieval-Augmented Generation (RAG) with the Gale Encyclopedia of Medicine.
 The system retrieves relevant medical content from the document, processes it with an LLM, and responds with clean and structured answers.
 
 ### Tech Stack
