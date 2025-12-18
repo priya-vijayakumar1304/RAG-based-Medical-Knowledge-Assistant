@@ -89,8 +89,11 @@ This project supports automated deployment using Docker and GitHub Actions.
 
 #### Deployment Flow:
 1.Build Docker image from source code
+
 2.Push image to Amazon ECR
+
 3.Deploy container on AWS EC2
+
 4.Automate builds and deployments via GitHub Actions
 
 #### Required GitHub Secrets:
