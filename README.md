@@ -2,21 +2,21 @@
 
 A Retrieval-Augmented Generation (RAG) system for medical question answering, built using authoritative reference material from the Gale Encyclopedia of Medicine. The system retrieves relevant medical context using semantic search and generates responses grounded in retrieved source content.
 
-### Overview
+### Overview:
 
 Large Language Models may generate responses that are not aligned with domain-specific knowledge. This project addresses that challenge by grounding model outputs in verified medical literature using a Retrieval-Augmented Generation (RAG) architecture. The assistant enables users to ask medical questions and receive context-aware, source-grounded, and domain-specific responses.
 
-### Medical Disclaimer
+### Medical Disclaimer:
 
 This project is for educational and informational use only and is not intended for medical diagnosis or treatment.  
 Always consult a qualified healthcare professional for medical advice.
 
-### Intended Use
+### Intended Use:
 
 The value of this project is in enabling fast, semantic access to large medical reference material. Instead of manually searching textbooks, users can ask natural language questions and receive grounded, source-based explanations.
 It is intended for learning, research and informational purposes only and is not designed for diagnosis, treatment, or clinical decision-making.
 
-### System Architecture
+### System Architecture:
 
 The application follows a standard Retrieval-Augmented Generation pipeline:
 
@@ -28,7 +28,7 @@ The application follows a standard Retrieval-Augmented Generation pipeline:
 
 This approach ensures responses are generated based on retrieved medical sources rather than relying solely on the model’s internal knowledge.
 
-### Key Features
+### Key Features:
 
 - Domain-specific medical question answering using authoritative reference material
 - Semantic search over medical documents using dense vector embeddings
@@ -38,7 +38,7 @@ This approach ensures responses are generated based on retrieved medical sources
 - Automated CI/CD pipeline using GitHub Actions
 - Cloud deployment on AWS EC2
 
-### Tech Stack
+### Tech Stack:
 - **Language:** Python 3.12  
 - **LLM Orchestration:** LangChain  
 - **Embedding Model:** HuggingFace (`sentence-transformers/all-MiniLM-L6-v2`)  
@@ -50,121 +50,72 @@ This approach ensures responses are generated based on retrieved medical sources
 - **CI/CD:** GitHub Actions  
 - **Cloud Platform:** AWS EC2  
 
-### How to run?
-#### STEPS:
-
-Clone the repository
-
+### Getting Started:
+#### 1.Clone the repository
 ```bash
 git clone https://github.com/priya-vijayakumar1304/RAG-based-Medical-Knowledge-Assistant.git
+cd RAG-based-Medical-Knowledge-Assistant
 ```
-#### STEP 01- Create a conda environment after opening the repository
-
+#### 2.Create and activate a virtual environment
 ```bash
 conda create -p venv python==3.12.7 -y
-```
-
-```bash
 conda activate venv/
 ```
-
-
-#### STEP 02- install the requirements
+#### 3.Install dependencies
 ```bash
 pip install -r requirements.txt
 ```
-
-
-#### Create a `.env` file in the root directory and add your Pinecone & openai credentials as follows:
-
-```ini
-PINECONE_API_KEY = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-GROQ_API_KEY = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+#### 4.Configure environment variables
+Create a .env file in the project root:
 ```
-
-
-```bash
-# run the following command to store embeddings to pinecone
+PINECONE_API_KEY=your_pinecone_api_key
+GROQ_API_KEY=your_groq_api_key
+```
+#### 5.Index medical documents into Pinecone
+```
 python store_index.py
 ```
-
-```bash
-# Finally run the following command
+#### 6.Run the application
+```
 python app.py
 ```
-
-Now,
-```bash
-open up localhost:
+Open your browser and navigate to:
+```
+http://localhost:8080
 ```
 
-### AWS-CICD-Deployment-with-Github-Actions
+### Deployment (AWS + CI/CD):
+This project supports automated deployment using Docker and GitHub Actions.
 
-#### 1. Login to AWS console.
+#### Deployment Flow:
+1.Build Docker image from source code
+2.Push image to Amazon ECR
+3.Deploy container on AWS EC2
+4.Automate builds and deployments via GitHub Actions
 
-#### 2. Create IAM user for deployment
+#### Required GitHub Secrets:
+- `AWS_ACCESS_KEY_ID`
+- `AWS_SECRET_ACCESS_KEY`
+- `AWS_DEFAULT_REGION`
+- `ECR_REPO`
+- `PINECONE_API_KEY`
+- `GROQ_API_KEY`
 
-	#with specific access
+### Future Enhancements:
 
-	1. EC2 access : It is virtual machine
+- **Hybrid Retrieval:** Combine dense vector search with keyword-based retrieval (BM25) to improve recall for complex and rare medical queries  
+- **Reranking:** Introduce a reranking layer (e.g., cross-encoders or LLM-based rerankers) to improve relevance of retrieved context before generation  
+- **Citation Display:** Surface source references (document sections or pages) alongside generated responses for improved transparency  
+- **Multi-Document Ingestion:** Enable dynamic upload and indexing of multiple medical documents beyond the current knowledge base  
+- **Response Evaluation:** Integrate automated evaluation techniques to assess response faithfulness and context relevance  
 
-	2. ECR: Elastic Container registry to save your docker image in aws
+### 📚 Use Cases
 
+- Medical knowledge lookup for students and practitioners
+- Reference-based medical Q&A
+- AI-powered search over medical textbooks
+- Educational and research assistance
 
-	#Description: About the deployment
-
-	1. Build docker image of the source code
-
-	2. Push your docker image to ECR
-
-	3. Launch Your EC2 
-
-	4. Pull Your image from ECR in EC2
-
-	5. Launch your docker image in EC2
-
-	#Policy:
-
-	1. AmazonEC2ContainerRegistryFullAccess
-
-	2. AmazonEC2FullAccess
-
-	
-#### 3. Create ECR repo to store/save docker image (save the respository URI)
-	
-#### 4. Create EC2 machine (Ubuntu) 
-
-#### 5. Open EC2 and Install docker in EC2 Machine:
-	
-	
-	#optinal
-
-	sudo apt-get update -y
-
-	sudo apt-get upgrade
-	
-	#required
-
-	curl -fsSL https://get.docker.com -o get-docker.sh
-
-	sudo sh get-docker.sh
-
-	sudo usermod -aG docker ubuntu
-
-	newgrp docker
-	
-#### 6. Configure EC2 as self-hosted runner:
-    setting>actions>runner>new self hosted runner> choose os> then run command one by one
-
-
-#### 7. Setup github secrets:
-
-   - AWS_ACCESS_KEY_ID
-   - AWS_SECRET_ACCESS_KEY
-   - AWS_DEFAULT_REGION
-   - ECR_REPO
-   - PINECONE_API_KEY
-   - GROQ_API_KEY
-
-### 
+### License
+This project is licensed under the Apache 2.0 License.
 
