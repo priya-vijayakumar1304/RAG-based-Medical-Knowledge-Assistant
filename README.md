@@ -1,19 +1,54 @@
 ## RAG-based-Medical-Knowledge-Assistant
 
-An intelligent medical question-answering chatbot built using Retrieval-Augmented Generation (RAG) with the Gale Encyclopedia of Medicine.
-The system retrieves relevant medical content from the document, processes it with an LLM, and responds with clean and structured answers.
+A Retrieval-Augmented Generation (RAG) system for medical question answering, built using authoritative reference material from the Gale Encyclopedia of Medicine. The system retrieves relevant medical context using semantic search and generates responses grounded in retrieved source content.
+
+### Overview
+
+Large Language Models may generate responses that are not aligned with domain-specific knowledge. This project addresses that challenge by grounding model outputs in verified medical literature using a Retrieval-Augmented Generation (RAG) architecture. The assistant enables users to ask medical questions and receive context-aware, source-grounded, and domain-specific responses.
+
+### Medical Disclaimer
+
+This project is for educational and informational use only and is not intended for medical diagnosis or treatment.  
+Always consult a qualified healthcare professional for medical advice.
+
+### Intended Use
+
+The value of this project is in enabling fast, semantic access to large medical reference material. Instead of manually searching textbooks, users can ask natural language questions and receive grounded, source-based explanations.
+It is intended for learning, research and informational purposes only and is not designed for diagnosis, treatment, or clinical decision-making.
+
+### System Architecture
+
+The application follows a standard Retrieval-Augmented Generation pipeline:
+
+- Medical documents are extracted and split into semantic chunks
+- Chunks are embedded using a HuggingFace sentence embedding model
+- Embeddings are stored in a Pinecone vector database
+- User queries are converted into embeddings and matched via similarity search
+- Retrieved medical context is passed to the LLM to generate grounded answers
+
+This approach ensures responses are generated based on retrieved medical sources rather than relying solely on the model’s internal knowledge.
+
+### Key Features
+
+- Domain-specific medical question answering using authoritative reference material
+- Semantic search over medical documents using dense vector embeddings
+- Retrieval-Augmented Generation to ground LLM responses in source content
+- Interactive web interface for real-time medical Q&A
+- Containerized deployment with Docker
+- Automated CI/CD pipeline using GitHub Actions
+- Cloud deployment on AWS EC2
 
 ### Tech Stack
-- Python 3.12.7
-- LangChain orchestration
-- HuggingFaceEmbedding (model: sentence-transformers/all-MiniLM-L6-v2)
-- Pinecone Vector Database
-- Groq (model: openai/gpt-oss-120b)
-- Backend: Flask
-- Frontend: Bootstrap + jQuery
-- CI/CD pipeline - Github Actions
-- Docker
-- AWS EC2
+- **Language:** Python 3.12  
+- **LLM Orchestration:** LangChain  
+- **Embedding Model:** HuggingFace (`sentence-transformers/all-MiniLM-L6-v2`)  
+- **Vector Database:** Pinecone  
+- **LLM Provider:** Groq (GPT-OSS)  
+- **Backend:** Flask  
+- **Frontend:** Bootstrap, jQuery  
+- **Containerization:** Docker  
+- **CI/CD:** GitHub Actions  
+- **Cloud Platform:** AWS EC2  
 
 ### How to run?
 #### STEPS:
